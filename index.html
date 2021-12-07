@@ -81,6 +81,28 @@
 
     // ===================
 
+    /*
+    Notes from the API: 
+    Just hit http://numbersapi.com/number/type to get a plain text response, where
+
+type is one of trivia, math, date, or year. Defaults to trivia if omitted.
+number is
+an integer, or
+the keyword random, for which we will try to return a random available fact, or
+a day of year in the form month/day (eg. 2/29, 1/09, 04/1), if type is date
+ranges of numbers
+http://numbersapi.com/42
+⇒ 42 is the result given by Google and Bing for the query "the answer to life the universe and everything".
+
+http://numbersapi.com/2/29/date
+⇒ February 29 is the day in 1504 that Christopher Columbus uses his knowledge of a lunar eclipse to convince Native Americans to provide him with supplies.
+
+http://numbersapi.com/random/year
+⇒ 2013 is the year that China will attempt its first unmanned Moon landing.
+    */
+
+    
+
         // 1. Assign DOM elements to variables.
         let cardBody = document.querySelector(".card-body");
         // let fact = document.querySelector("#fact"); 
