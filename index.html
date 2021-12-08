@@ -9,6 +9,7 @@
 <style>
     #fact { display: none; }
     #math { display: none; }
+    #random-year { display: none; }
     input:placeholder-shown {
         font-size: 1rem;
     }
@@ -44,17 +45,17 @@
             </div>
             <div class="col-md-4">
                 <div class="card bg-primary text-white mt-5 p-4">
-                    <h1>Number Trivia</h1>
-                    <p>Enter a number and get random trivia</p>
-                    <input type="number" name="" id="" class="form-control form-control-lg" placeholder="Enter any number...">
-                    <div class="card-body" id="">
+                    <h1>Random Year Trivia</h1>
+                    <button class="btn btn-lg btn-info" id="randomYearInput">Give me a random year</button>
+                    
+                    <div class="card-body" id="random-year">
                         <h4>Did you know...</h4>
-                        <p id="" class="card-text"></p>
+                        <p id="randomYearText" class="card-text"></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="card bg-primary text-white mt-5 p-4">
                     <h1>Number Trivia</h1>
@@ -66,7 +67,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script>
@@ -117,6 +118,12 @@ http://numbersapi.com/random/year
         
         mathInput.addEventListener("input", getMathFetch);
 
+        let randomYearInput = document.querySelector("#randomYearInput");
+        let randomYearText = document.querySelector("#randomYearText");
+        let randomYear = document.querySelector("#random-year");
+
+        randomYearInput.addEventListener("click", getRandomYearFetch);
+
 
         // 2. AddEventListener to input element.        
         numberInput.addEventListener("input", getFactFetch);
@@ -152,6 +159,19 @@ http://numbersapi.com/random/year
                         math.style.display = "block";
                         mathText.innerText = data;
                     }   
+                })
+                .catch(err=>console.log(err));
+        }
+
+        function getRandomYearFetch () {
+            // let number = mathInput.value;
+
+            fetch(`http://numbersapi.com/random/year`)
+                .then(response=>response.text())  
+                .then(data=> {
+                // console.log(data); // testing
+                    randomYear.style.display = "block";
+                    randomYearText.innerText = data;  
                 })
                 .catch(err=>console.log(err));
         }
